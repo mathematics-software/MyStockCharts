@@ -3,7 +3,8 @@
     <head>
         <title>Stock Charts</title>
         <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-        <script type="text/javascript" defer>
+        <script type="text/javascript">
+            window.addEventListener("DOMContentLoaded", function(e){
             const parameters = new URLSearchParams(window.location.search);
             var symbols = parameters.get('symbols').split(",");
             for(var idx = 0; idx<symbols.length; idx++){
@@ -30,12 +31,11 @@
 }
   );
             }
-    </script>
-    <script type="text/javascript" defer>
         var charts = document.getElementsByClassName("tradingview-widget-container");
         for(var idx=0; idx<charts.length; idx++){
             charts[idx].addEventListener("click", function(e){e.target.remove();});
         }
+            });
         </script>
     </head>
     <body>
