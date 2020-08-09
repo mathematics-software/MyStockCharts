@@ -5,7 +5,36 @@
         <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
         <script type="text/javascript" defer>
             const parameters = new URLSearchParams(window.location.search);
-            console.log(parameters.get('symbols').split(","));
+            var symbols = parameters.get('symbols').split(",");
+            for(var idx = 0; idx<symbols.length; idx++){
+                document.body.innerHTML += '<div class="tradingview-widget-container" style="display: inline-block;"><div id="tradingview_' + idx + '"></div><div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/' + symbols[idx] + '/" rel="noopener" target="_blank"><span class="blue-text">' + symbols[idx] + ' Chart</span></a> by TradingView</div>';
+  new TradingView.widget(
+  {
+  "width": 450,
+  "height": 350,
+  "symbol": "NASDAQ:AAPL",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "light",
+  "style": "1",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "save_image": false,
+  "studies": [
+    "MACD@tv-basicstudies",
+    "RSI@tv-basicstudies",
+    "WilliamsAlligator@tv-basicstudies"
+  ],
+  "container_id": "tradingview_264c1"
+}
+  );
+    </script>
+    <script type="text/javascript" defer>
+        var charts = document.getElementsByClassName("tradingview-widget-container");
+        for(var idx=0; idx<charts.length; idx++){
+            charts[idx].addEventListener("click", function(e){e.target.remove();});
+        }
         </script>
     </head>
     <body>
