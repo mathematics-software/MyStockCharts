@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stock Charts</title>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript" defer>
+            const parameters = new URLSearchParams(window.location.search);
+            console.log(parameters.get('symbols').split(","));
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
