@@ -8,8 +8,11 @@
             window.addEventListener("DOMContentLoaded", function(e){
             const parameters = new URLSearchParams(window.location.search);
             window.symbols = parameters.get('symbols').split(",");
-            for(var idx = 0; idx<Math.min(12,window.symbols.length); idx++){
+            for(var idx = 0; idx<12; idx++){
                 var symbol = window.symbols.pop();
+                if(symbol == undefined){
+                    break;
+                }
                 document.body.innerHTML += '<div class="tradingview-widget-container" style="display: inline-block;"><div id="tradingview_' + window.idx + '"></div><div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/' + symbol + '/" rel="noopener" target="_blank"><span class="blue-text">' + symbol + ' Chart</span></a> by TradingView</div>';
   new TradingView.widget(
   {
