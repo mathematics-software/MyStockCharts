@@ -33,7 +33,7 @@
             }
         var charts = document.getElementsByClassName("tradingview-widget-container");
         for(var idx=0; idx<charts.length; idx++){
-            charts[idx].addEventListener("click", function(e){e.target.remove();});
+            charts[idx].addEventListener("click", function(e){e.target.closest(".tradingview-widget-container").remove();});
         }
             });
         </script>
