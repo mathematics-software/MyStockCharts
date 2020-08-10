@@ -2,6 +2,16 @@
 <html>
     <head>
         <title>Stock Charts</title>
+        <meta name="robots" content="noindex,nofollow">
+        <meta charset="utf-8">
+        <style>
+            .tradingview-widget-copyright{
+                background-color: white !important;
+            }
+            .tradingview-widget-copyright:hover{
+                background-color: rgba(255,0,0,0.5) !important;
+            }
+        </style>
         <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
         <script type="text/javascript">
             window.idx = 0;
@@ -41,7 +51,6 @@
         var charts = document.getElementsByClassName("tradingview-widget-container");
         for(var idx=0; idx<charts.length; idx++){
             charts[idx].addEventListener("click", function(e){
-                //e.target.closest(".tradingview-widget-container").remove();
                 var new_symbol = window.symbols.pop();
                 if(new_symbol != undefined){
                     //Replace current symbol with new_symbol
@@ -68,6 +77,8 @@
   "container_id": container.firstChild.getAttribute("id")
 }
   ); 
+                }else{
+                    e.target.closest(".tradingview-widget-container").remove();
                 }
             });
         }
