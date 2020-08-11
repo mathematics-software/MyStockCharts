@@ -5,6 +5,16 @@
         <meta name="robots" content="noindex,nofollow">
         <meta charset="utf-8">
         <style>
+            html{
+                margin: 0px !important;
+                padding: 0px !important;
+            }
+            body{
+                width: 1600px !important;
+                height: 900px !important;
+                margin: 0px !important;
+                padding: 0px !important;
+            }
             .tradingview-widget-copyright{
                 background-color: white !important;
             }
@@ -24,66 +34,61 @@
                     break;
                 }
                 document.body.innerHTML += '<div class="tradingview-widget-container" style="display: inline-block;"><div id="tradingview_' + window.idx + '"></div><div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/' + symbol + '/" rel="noopener" target="_blank"><span class="blue-text">' + symbol + ' Chart</span></a> by TradingView</div>';
-  new TradingView.widget(
-  {
-  "width": 450,
-  "height": 350,
-  "symbol": symbol,
-  "interval": "D",
-  "timezone": "Etc/UTC",
-  "theme": "light",
-  "style": "1",
-  "locale": "en",
-  "toolbar_bg": "#f1f3f6",
-  "enable_publishing": false,
-  "save_image": false,
-  "studies": [
-    "MACD@tv-basicstudies",
-    "RSI@tv-basicstudies",
-    "WilliamsAlligator@tv-basicstudies"
-  ],
-  "container_id": "tradingview_" + window.idx
-}
-  ); 
-                
-              window.idx = window.idx + 1;
+                new TradingView.widget({
+                    "width": 450,
+                    "height": 350,
+                    "symbol": symbol,
+                    "interval": "D",
+                    "timezone": "Etc/UTC",
+                    "theme": "light",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "save_image": false,
+                    "studies": [
+                        "MACD@tv-basicstudies",
+                        "RSI@tv-basicstudies",
+                        "WilliamsAlligator@tv-basicstudies"
+                    ],
+                    "container_id": "tradingview_" + window.idx
+                });   
+                window.idx = window.idx + 1;
             }
-        var charts = document.getElementsByClassName("tradingview-widget-container");
-        for(var idx=0; idx<charts.length; idx++){
-            charts[idx].addEventListener("click", function(e){
-                var new_symbol = window.symbols.pop();
-                if(new_symbol != undefined){
-                    //Replace current symbol with new_symbol
-                    var container = e.target.closest(".tradingview-widget-container");
-                    container.querySelector(".tradingview-widget-copyright").innerHTML = '<a href="https://www.tradingview.com/symbols/' + new_symbol + '/" rel="noopener" target="_blank"><span class="blue-text">' + new_symbol + ' Chart</span></a> by TradingView</div>';
-                      new TradingView.widget(
-  {
-  "width": 450,
-  "height": 350,
-  "symbol": new_symbol,
-  "interval": "D",
-  "timezone": "Etc/UTC",
-  "theme": "light",
-  "style": "1",
-  "locale": "en",
-  "toolbar_bg": "#f1f3f6",
-  "enable_publishing": false,
-  "save_image": false,
-  "studies": [
-    "MACD@tv-basicstudies",
-    "RSI@tv-basicstudies",
-    "WilliamsAlligator@tv-basicstudies"
-  ],
-  "container_id": container.firstChild.getAttribute("id")
-}
-  ); 
-                }else{
-                    e.target.closest(".tradingview-widget-container").remove();
-                }
-            });
-        }
-            });
-        </script>
+            var charts = document.getElementsByClassName("tradingview-widget-container");
+            for(var idx=0; idx<charts.length; idx++){
+                charts[idx].addEventListener("click", function(e){
+                    var new_symbol = window.symbols.pop();
+                    if(new_symbol != undefined){
+                        //Replace current symbol with new_symbol
+                        var container = e.target.closest(".tradingview-widget-container");
+                        container.querySelector(".tradingview-widget-copyright").innerHTML = '<a href="https://www.tradingview.com/symbols/' + new_symbol + '/" rel="noopener" target="_blank"><span class="blue-text">' + new_symbol + ' Chart</span></a> by TradingView</div>';
+                        new TradingView.widget({
+                            "width": 450,
+                            "height": 350,
+                            "symbol": new_symbol,
+                            "interval": "D",
+                            "timezone": "Etc/UTC",
+                            "theme": "light",
+                            "style": "1",
+                            "locale": "en",
+                            "toolbar_bg": "#f1f3f6",
+                            "enable_publishing": false,
+                            "save_image": false,
+                            "studies": [
+                                "MACD@tv-basicstudies",
+                                "RSI@tv-basicstudies",
+                                "WilliamsAlligator@tv-basicstudies"
+                            ],
+                            "container_id": container.firstChild.getAttribute("id")
+                        }); 
+                    }else{
+                        e.target.closest(".tradingview-widget-container").remove();
+                    }
+                });
+            }
+        });
+    </script>
     </head>
     <body>
     </body>
