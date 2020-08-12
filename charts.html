@@ -35,8 +35,8 @@
                 }
                 document.body.innerHTML += '<div class="tradingview-widget-container" style="display: inline-block;"><div id="tradingview_' + window.idx + '"></div><div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/' + symbol + '/" rel="noopener" target="_blank"><span class="blue-text">' + symbol + ' Chart</span></a> by TradingView</div>';
                 new TradingView.widget({
-                    "width": 450,
-                    "height": 350,
+                    "width": 400,
+                    "height": 300,
                     "symbol": symbol,
                     "interval": "D",
                     "timezone": "Etc/UTC",
@@ -48,7 +48,7 @@
                     "save_image": false,
                     "studies": [
                         "MACD@tv-basicstudies",
-                        "RSI@tv-basicstudies",
+                        //"RSI@tv-basicstudies",
                         "WilliamsAlligator@tv-basicstudies"
                     ],
                     "container_id": "tradingview_" + window.idx
@@ -64,8 +64,8 @@
                         var container = e.target.closest(".tradingview-widget-container");
                         container.querySelector(".tradingview-widget-copyright").innerHTML = '<a href="https://www.tradingview.com/symbols/' + new_symbol + '/" rel="noopener" target="_blank"><span class="blue-text">' + new_symbol + ' Chart</span></a> by TradingView</div>';
                         new TradingView.widget({
-                            "width": 450,
-                            "height": 350,
+                            "width": 400,
+                            "height": 300,
                             "symbol": new_symbol,
                             "interval": "D",
                             "timezone": "Etc/UTC",
@@ -77,7 +77,7 @@
                             "save_image": false,
                             "studies": [
                                 "MACD@tv-basicstudies",
-                                "RSI@tv-basicstudies",
+                                //"RSI@tv-basicstudies",
                                 "WilliamsAlligator@tv-basicstudies"
                             ],
                             "container_id": container.firstChild.getAttribute("id")
